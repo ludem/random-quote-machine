@@ -14,11 +14,12 @@ const quotes = [];
 const floorRandomNumberInARange = function (max, min = 0) {
     return Math.floor(Math.random() * (max-min) + min);
 }
-
+const filterArray = array => array.filter(el => el['author'] && el['text']);
 const randomElementFromArray = arr => arr[floorRandomNumberInARange(arr.length)];
 
 fetch(endpoint)
     .then(blob => blob.json())
+    .then(json => filterArray(json))
     .then(data => quotes.push(...data))
 
 const quoteBox = document.querySelector('.quote');
