@@ -1,0 +1,32 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <div class="quote">brum</div>
+        <button class="change">Bottone</button>
+    </body>
+</html>
+<script>
+const endpoint = 'https://jsonblob.com/api/jsonBlob/729a10dd-4837-11e7-ae4c-05b82d5e827c';
+
+const quotes = [];
+
+const floorRandomNumberInARange = function (max, min = 0) {
+    return Math.floor(Math.random() * (max-min) + min);
+}
+
+const randomElementFromArray = arr => arr[floorRandomNumberInARange(arr.length)];
+
+fetch(endpoint)
+    .then(blob => blob.json())
+    .then(data => quotes.push(...data))
+
+const quoteBox = document.querySelector('.quote');
+const quoteButton = document.querySelector('.change');
+quoteButton.addEventListener('click', function(e) {
+    const randomQuote = randomElementFromArray(quotes);
+    console.log(randomQuote);
+    quoteBox.innerHTML = randomQuote.text;
+});
+
+</script>
