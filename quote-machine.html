@@ -8,8 +8,7 @@
 </html>
 <script>
 const endpoint = 'https://jsonblob.com/api/jsonBlob/729a10dd-4837-11e7-ae4c-05b82d5e827c';
-
-const quotes = [];
+const quotes = [{text: 'Provola', author: 'X'}];
 
 const floorRandomNumberInARange = function (max, min = 0) {
     return Math.floor(Math.random() * (max-min) + min);
@@ -21,6 +20,7 @@ fetch(endpoint)
     .then(blob => blob.json())
     .then(json => filterArray(json))
     .then(data => quotes.push(...data))
+    .catch(e => console.log(e))
 
 const quoteBox = document.querySelector('.quote');
 const quoteButton = document.querySelector('.change');
