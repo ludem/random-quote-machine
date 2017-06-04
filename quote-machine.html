@@ -17,34 +17,27 @@
                 max-width:100vw;
             }
             .container{
-                            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-                            border-radius: 0.25em;
-                            display:flex;
-                            flex-direction: column;
-                            align-items:center;
-                            justify-content: center;
-                            text-align: center;
-                            position: relative;
-                            padding:0.5rem 1rem;
-                            font-weight: 800;
-                            height: 30vh;
-                            width: 60vw;
+                position: relative;
+                display:flex;
+                flex-direction: column;
+                align-items:center;
+                justify-content: center;
+                text-align: center;
+                padding:0.5rem 1rem;
+                font-weight: 800;
+                height: 45vh;
+                width: 60vw;
+                border-radius: 0.25em;
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
             
               background: -webkit-linear-gradient(340deg, #fc3b30 40%, #5ac8fa 40%);
               background: -moz-linear-gradient(340deg, #fc3b30 40%, #5ac8fa 40%);
               background: -o-linear-gradient(340deg, #fc3b30 40%, #5ac8fa 40%);
               background: linear-gradient(70deg, #fc3b30 40%, #5ac8fa 40%);
-            
-            
+                    
               transition: box-shadow 0.5s linear;
                         }
-            .change{
-                position: absolute;
-                bottom: 0.2rem;
-                right: 0.2rem;
-                margin:0.5rem;
-                cursor: pointer;
-            }
+            
             h2::before { 
                 content: "« ";
             }
@@ -62,21 +55,43 @@
                 justify-content: center;
                 width:90vw;
             }
-            .twitter-share-button{
-                position: absolute;
-                bottom: 0.2rem;
-                left: 0.2rem;
-                margin:0.5rem;
-                cursor: pointer;   
-            }
+            
             .box-refresh{
                 box-shadow: 0 8px 16px 0 rgba(255, 215, 0, 0.9);
                 }
+            
+            i {
+                position: absolute;
+                bottom: 0.2rem;
+                margin:0.5rem;
+                cursor: pointer;
+                color: darkblue;
+            }
+            i:hover{
+                color:gold;
+            }
+            .change{
+                right: 0.2rem;
+                
+            }
+            .twitter{
+                left: 0.2rem;
+                
+            }
             .faster-spin {
                 -webkit-animation: fa-spin 0.5s infinite linear;
                 animation: fa-spin 0.5s infinite linear;
                 color:gold;
-}
+            }
+
+            .fade{
+                opacity:0;
+            }
+            .gold{
+                color:darkblue;
+            }
+
+
         </style>
         <link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -88,11 +103,11 @@
         <div class=container>
             <h2 class="quote">brum</h2>
             <p class="author">Don Semola Gatto</p>
-            <a class="twitter-share-button"
-                href="https://twitter.com/intent/tweet">
-                <i class="fa fa-twitter fa-2x"></i>
+            <a
+                href="https://twitter.com/intent/tweet" target="_tab">
+                <i class="twitter fa fa-twitter fa-2x"></i>
             </a>
-            <i class="change fa fa-refresh fa-2x fa-fw"></i>
+            <i class="change fa fa-refresh fa-fw fa-2x"></i>
         </div>
     </body>
 </html>
@@ -123,11 +138,16 @@ quoteButton.addEventListener('click', function(e) {
     authorBox.innerHTML = randomQuote.author;
     container.classList.add('box-refresh');
     quoteButton.classList.add('faster-spin');
+    quoteBox.classList.add('gold');
+    authorBox.classList.add('gold');
+
 });
 
 container.addEventListener('transitionend', function(e){
     quoteButton.classList.remove('faster-spin');
     container.classList.remove('box-refresh');
+    quoteBox.classList.remove('gold');
+    authorBox.classList.remove('gold');
 })
 
 </script>
