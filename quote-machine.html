@@ -1,9 +1,78 @@
 <html>
     <head>
+        <style>
+            html{
+                font-family: 'Bitter', cursive;
+                font-size: calc(10px + 2vmin);
+                color:black;
+            }
+            body{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                min-height: 90vh;
+            }
+            h1{
+                position: absolute;
+                text-align: center;
+                top:0;
+                left:0;
+                margin-left: 1rem;
+                font-size: 1.5rem;
+            }
+            .container{
+                display:flex;
+                flex-direction: column;
+                align-items:stretch;
+                justify-content: center;
+                text-align: center;
+                position: relative;
+                min-height: 50vh;
+                min-width: 50vw;
+                border-top: 0.2rem solid grey;
+                border-bottom: 0.2rem solid grey;
+                padding:0.5rem;
+            }
+            .change{
+                position: absolute;
+                bottom: 0.2rem;
+                right: 0.2rem;
+                margin:0.5rem;
+                border-radius: 50%;
+                background-color: red;
+                min-height: 1rem;
+                min-width: 1rem;
+            }
+            button {
+                outline: none;
+            }
+            h2::before { 
+                content: "« ";
+            }
+            h2::after { 
+                content: " »";
+            }
+            .author{
+                font-size: 0.7rem;
+            }
+            h1{
+                font-size: 1rem;
+                background: silver;
+                width:100%;
+            }
+        </style>
+        <link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
     </head>
     <body>
-        <div class="quote">brum</div>
-        <button class="change">Bottone</button>
+        <div class=title>
+            <h1>My Random Quote Machine</h1>
+        </div>
+        <div class=container>
+            <h2 class="quote">brum</h2>
+            <p class="author">Don Semola Gatto</p>
+            <button class="change"></button>
+        </div>
     </body>
 </html>
 <script>
@@ -23,11 +92,13 @@ fetch(endpoint)
     .catch(e => console.log(e))
 
 const quoteBox = document.querySelector('.quote');
+const authorBox = document.querySelector('.author');
 const quoteButton = document.querySelector('.change');
 quoteButton.addEventListener('click', function(e) {
     const randomQuote = randomElementFromArray(quotes);
     console.log(randomQuote);
     quoteBox.innerHTML = randomQuote.text;
+    authorBox.innerHTML = randomQuote.author;
 });
 
 </script>
