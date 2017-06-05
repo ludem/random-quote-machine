@@ -128,11 +128,11 @@ function refreshQuote (e) {
 }
 
 function newQuoteTransition (e) {
- 	refreshQuote();
 	container.classList.add('box-refresh');
 	quoteButton.classList.add('faster-spin');
 	quoteBox.classList.add('gold');
 	authorBox.classList.add('gold');
+	refreshQuote();
 }
 
 function endAnimation(e) {
@@ -142,12 +142,16 @@ function endAnimation(e) {
 	authorBox.classList.remove('gold');
 }
 
-fetch(endpoint)
+function retrieveQuote() {
+	fetch(endpoint)
 	.then(blob => blob.json())
 	.then(json => filterArray(json))
 	.then(data => quotes.push(...data))
-	.then(e => refreshQuote())
+	.then(e => newQuoteTransition())
 	.catch(e => console.log(e))
+}
+
+retrieveQuote();
 
 const quoteBox = document.querySelector('.quote');
 const authorBox = document.querySelector('.author');
@@ -155,7 +159,7 @@ const quoteButton = document.querySelector('.change');
 const container = document.querySelector('.container');
 const twitterLink = document.querySelector('#twitter-link');
 
-quoteButton.addEventListener('click', newQuoteTransition);
+quoteButton.addEventListener('click', retrieveQuote);
 container.addEventListener('transitionend', endAnimation);
 
 </script>
