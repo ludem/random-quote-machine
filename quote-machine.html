@@ -43,7 +43,8 @@
 				font-size: 0.7rem;
 			}
 			h1{
-				font-size: 1rem;
+				font-size: 0.7rem;
+				color:silver;
 			}
 			.title{
 				display: flex;
@@ -52,7 +53,7 @@
 			}
 			
 			.box-refresh{
-				box-shadow: 0 8px 16px 0 rgba(255, 215, 0, 0.9);
+				box-shadow: 0 0 0.5rem 0.5rem rgba(255, 215, 0, 0.9);
 				}
 			
 			.button {
@@ -85,9 +86,6 @@
 				animation: fa-spin 0.5s infinite linear;
 				color:gold;
 			}
-			.gold{
-				text-shadow: 0 8px 16px 0 rgba(255, 215, 0, 0.9);
-			}
 
 
 		</style>
@@ -96,7 +94,7 @@
 	</head>
 	<body>
 		<div class=title>
-			<h1>My Random Quote Machine</h1>
+			<h1>"Random Quote Machine" by <a href="https://codepen.io/ludem/" target="_tab">ludem</a></h1>
 		</div>
 		<div class=container>
 			
@@ -122,7 +120,6 @@ const filterArray = array => array.filter(el => el['author'] && el['text']);
 const randomElementFromArray = arr => arr[floorRandomNumberInARange(arr.length)];
 
 function refreshQuote (e) {
-	console.log("ciao");
 	const randomQuote = randomElementFromArray(quotes);
 	quoteBox.innerHTML = randomQuote.text;
 	authorBox.innerHTML = randomQuote.author;
