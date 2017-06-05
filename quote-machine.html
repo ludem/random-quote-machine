@@ -124,7 +124,6 @@ function refreshQuote (e) {
 	quoteBox.innerHTML = randomQuote.text;
 	authorBox.innerHTML = randomQuote.author;
 	twitterLink.href= encodeURI(`https://twitter.com/intent/tweet?text="${randomQuote.text}" - ${randomQuote.author}&hashtags=quote`);
-	
 }
 
 function newQuoteTransition (e) {
@@ -132,7 +131,6 @@ function newQuoteTransition (e) {
 	quoteButton.classList.add('faster-spin');
 	quoteBox.classList.add('gold');
 	authorBox.classList.add('gold');
-	refreshQuote();
 }
 
 function endAnimation(e) {
@@ -142,16 +140,15 @@ function endAnimation(e) {
 	authorBox.classList.remove('gold');
 }
 
-function retrieveQuote() {
+function fetchQuote() {
 	fetch(endpoint)
 	.then(blob => blob.json())
 	.then(json => filterArray(json))
 	.then(data => quotes.push(...data))
-	.then(e => newQuoteTransition())
+    .then(e => refreshQuote())
+    .then(e => endAnimation())
 	.catch(e => console.log(e))
 }
-
-retrieveQuote();
 
 const quoteBox = document.querySelector('.quote');
 const authorBox = document.querySelector('.author');
@@ -159,7 +156,12 @@ const quoteButton = document.querySelector('.change');
 const container = document.querySelector('.container');
 const twitterLink = document.querySelector('#twitter-link');
 
-quoteButton.addEventListener('click', retrieveQuote);
-container.addEventListener('transitionend', endAnimation);
+fetchQuote();
+
+quoteButton.addEventListener('click', () => {
+    fetchQuote();
+    newQuoteTransition();
+    });
+//container.addEventListener('transitionend', endAnimation);
 
 </script>
