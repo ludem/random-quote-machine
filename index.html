@@ -1,167 +1,172 @@
 <html>
-	<head>
-		<style>
-			html{
-				font-family: 'Bitter', serif;
-				font-size: calc(10px + 2vmin);
-				color:darkblue;
-			}
-			body{
-				background-size: cover;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-				text-align: center;
-				min-height: 90vh;
-				max-width:100vw;
-			}
-			.container{
-			position: relative;
-			display:flex;
+
+<head>
+	<style>
+		html {
+			font-family: 'Bitter', serif;
+			font-size: calc(10px + 2vmin);
+			color: darkblue;
+		}
+
+		body {
+			background-size: cover;
+			display: flex;
 			flex-direction: column;
-			align-items:center;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			min-height: 90vh;
+			max-width: 100vw;
+		}
+
+		.container {
+			position: relative;
+			min-width: 12rem;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
 			justify-content: center;
 			text-align: center;
-													padding:0.5rem 1rem;
-																			font-weight: 800;
-																			height: 45vh;
-																			width: 60vw;
-						border-radius: 0.25em;
-						box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-			
-			
-			
-						background: -webkit-linear-gradient(345deg, darkcyan 30%, rgba(0, 0, 0, 0) 30%), -webkit-linear-gradient(335deg, aquamarine 66%, #5ac8fa 66%);
-						background: -moz-linear-gradient(345deg, darkcyan 30%, rgba(0, 0, 0, 0) 30%), -moz-linear-gradient(335deg, aquamarine 66%, #5ac8fa 66%);
-						background: -o-linear-gradient(345deg, darkcyan 30%, rgba(0, 0, 0, 0) 30%), -o-linear-gradient(335deg, aquamarine 66%, #5ac8fa 66%);
-		background: linear-gradient(75deg, darkcyan 30%, rgba(0, 0, 0, 0) 30%), linear-gradient(65deg, aquamarine 66%, #5ac8fa 66%);				
-																		transition: box-shadow 0.5s linear;
-																								}
-			
-			.author{
-				font-size: 0.7rem;
-			}
-			h1{
-				font-size: 0.7rem;
-				color:silver;
-			}
-			.title{
-				display: flex;
-				justify-content: center;
-				width:90vw;
-			}
-			
-			.box-refresh{
-				box-shadow: 0 0 0.5rem 0.5rem rgba(255, 215, 0, 0.9);
-				}
-			
-			.button {
-				position: absolute;
-				bottom: 0.2rem;
-				margin:0.5rem;
-				cursor: pointer;
-				color: darkblue;
-			}
-			.button:hover{
-				color:gold;
-			}
-			.change{
-				right: 0.2rem;
-				
-			}
-			.twitter{
-				left: 0.2rem;
-				
-			}
-			.quote-icon{
-				position: absolute;
-				top: 0.2rem;
-				left: 0.2rem;
-				margin:0.5rem;
-				color: darkblue;
-			}
-			.faster-spin {
-				-webkit-animation: fa-spin 0.5s infinite linear;
-				animation: fa-spin 0.5s infinite linear;
-				color:gold;
-			}
+			padding: 2.5rem 1rem;
+			font-weight: 800;
+			height: 45vh;
+			width: 60vw;
+			border-radius: 0.25em;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+			background: -webkit-linear-gradient(345deg, darkcyan 30%, rgba(0, 0, 0, 0) 30%), -webkit-linear-gradient(335deg, aquamarine 66%, #5ac8fa 66%);
+			background: -moz-linear-gradient(345deg, darkcyan 30%, rgba(0, 0, 0, 0) 30%), -moz-linear-gradient(335deg, aquamarine 66%, #5ac8fa 66%);
+			background: -o-linear-gradient(345deg, darkcyan 30%, rgba(0, 0, 0, 0) 30%), -o-linear-gradient(335deg, aquamarine 66%, #5ac8fa 66%);
+			background: linear-gradient(75deg, darkcyan 30%, rgba(0, 0, 0, 0) 30%), linear-gradient(65deg, aquamarine 66%, #5ac8fa 66%);
+			transition: box-shadow 0.5s linear;
+		}
 
+		.author {
+			font-size: 0.7rem;
+		}
 
-		</style>
-		<link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	</head>
-	<body>
-		<div class=title>
-			<h1>"Random Quote Machine" by <a href="https://codepen.io/ludem/" target="_tab">ludem</a></h1>
-		</div>
-		<div class=container>
-			
-			<h2 class="quote"></h2>
-			<p class="author"></p>
-			<a id="twitter-link"
-				href="https://twitter.com/intent/tweet?text=" target="_tab">
+		h1 {
+			font-size: 0.7rem;
+			color: silver;
+		}
+
+		.title {
+			display: flex;
+			justify-content: center;
+			width: 90vw;
+		}
+
+		.box-refresh {
+			box-shadow: 0 0 0.5rem 0.5rem rgba(255, 215, 0, 0.9);
+		}
+
+		.button {
+			position: absolute;
+			bottom: 0.2rem;
+			margin: 0.5rem;
+			cursor: pointer;
+			color: darkblue;
+		}
+
+		.button:hover {
+			color: gold;
+		}
+
+		.change {
+			right: 0.2rem;
+		}
+
+		.twitter {
+			left: 0.2rem;
+		}
+
+		.quote-icon {
+			position: absolute;
+			top: 0.2rem;
+			left: 0.2rem;
+			margin: 0.5rem;
+			color: darkblue;
+		}
+
+		.faster-spin {
+			-webkit-animation: fa-spin 0.5s infinite linear;
+			animation: fa-spin 0.5s infinite linear;
+			color: gold;
+		}
+	</style>
+	<link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+	<div class=title>
+		<h1>"Random Quote Machine" by <a href="https://codepen.io/ludem/" target="_tab">ludem</a></h1>
+	</div>
+	<div class=container>
+
+		<h2 class="quote"></h2>
+		<p class="author"></p>
+		<a id="twitter-link" href="https://twitter.com/intent/tweet?text=" target="_tab">
 				<i class="button twitter fa fa-twitter fa-2x"></i>
 			</a>
-			<i class="button change fa fa-refresh fa-fw fa-2x"></i>
-			<i class="quote-icon fa fa-quote-left fa-2x"></i>
-		</div>
-	</body>
+		<i class="button change fa fa-refresh fa-fw fa-2x"></i>
+		<i class="quote-icon fa fa-quote-left fa-2x"></i>
+	</div>
+</body>
+
 </html>
 <script>
-const endpoint = 'https://jsonblob.com/api/jsonBlob/729a10dd-4837-11e7-ae4c-05b82d5e827c';
-const quotes = [];
+	const endpoint = 'https://jsonblob.com/api/jsonBlob/729a10dd-4837-11e7-ae4c-05b82d5e827c';
+	const quotes = [];
 
-const floorRandomNumberInARange = function (max, min = 0) {
-	return Math.floor(Math.random() * (max-min) + min);
-}
-const filterArray = array => array.filter(el => el['author'] && el['text']);
-const randomElementFromArray = arr => arr[floorRandomNumberInARange(arr.length)];
+	const floorRandomNumberInARange = function (max, min = 0) {
+		return Math.floor(Math.random() * (max - min) + min);
+	}
+	const filterArray = array => array.filter(el => el['author'] && el['text']);
+	const randomElementFromArray = arr => arr[floorRandomNumberInARange(arr.length)];
 
-function refreshQuote (e) {
-	const randomQuote = randomElementFromArray(quotes);
-	quoteBox.innerHTML = randomQuote.text;
-	authorBox.innerHTML = randomQuote.author;
-	twitterLink.href= encodeURI(`https://twitter.com/intent/tweet?text="${randomQuote.text}" - ${randomQuote.author}&hashtags=quote`);
-}
+	function refreshQuote(e) {
+		const randomQuote = randomElementFromArray(quotes);
+		quoteBox.innerHTML = randomQuote.text;
+		authorBox.innerHTML = randomQuote.author;
+		twitterLink.href = encodeURI(`https://twitter.com/intent/tweet?text="${randomQuote.text}" - ${randomQuote.author}&hashtags=quote`);
+	}
 
-function newQuoteTransition (e) {
-	container.classList.add('box-refresh');
-	quoteButton.classList.add('faster-spin');
-	quoteBox.classList.add('gold');
-	authorBox.classList.add('gold');
-}
+	function newQuoteTransition(e) {
+		container.classList.add('box-refresh');
+		quoteButton.classList.add('faster-spin');
+		quoteBox.classList.add('gold');
+		authorBox.classList.add('gold');
+	}
 
-function endAnimation(e) {
-	quoteButton.classList.remove('faster-spin');
-	container.classList.remove('box-refresh');
-	quoteBox.classList.remove('gold');
-	authorBox.classList.remove('gold');
-}
+	function endAnimation(e) {
+		quoteButton.classList.remove('faster-spin');
+		container.classList.remove('box-refresh');
+		quoteBox.classList.remove('gold');
+		authorBox.classList.remove('gold');
+	}
 
-function fetchQuote() {
-	fetch(endpoint)
-	.then(blob => blob.json())
-	.then(json => filterArray(json))
-	.then(data => quotes.push(...data))
-    .then(e => refreshQuote())
-    .then(e => endAnimation())
-	.catch(e => console.log(e))
-}
+	function fetchQuote() {
+		fetch(endpoint)
+			.then(blob => blob.json())
+			.then(json => filterArray(json))
+			.then(data => quotes.push(...data))
+			.then(e => refreshQuote())
+			.then(e => endAnimation())
+			.catch(e => console.log(e))
+	}
 
-const quoteBox = document.querySelector('.quote');
-const authorBox = document.querySelector('.author');
-const quoteButton = document.querySelector('.change');
-const container = document.querySelector('.container');
-const twitterLink = document.querySelector('#twitter-link');
+	const quoteBox = document.querySelector('.quote');
+	const authorBox = document.querySelector('.author');
+	const quoteButton = document.querySelector('.change');
+	const container = document.querySelector('.container');
+	const twitterLink = document.querySelector('#twitter-link');
 
-fetchQuote();
+	fetchQuote();
 
-quoteButton.addEventListener('click', () => {
-    fetchQuote();
-    newQuoteTransition();
-    });
+	quoteButton.addEventListener('click', () => {
+		fetchQuote();
+		newQuoteTransition();
+	});
 //container.addEventListener('transitionend', endAnimation);
 
 </script>
