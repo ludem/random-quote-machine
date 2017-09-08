@@ -124,7 +124,7 @@
 	const filterArray = array => array.filter(el => el['author'] && el['text']);
 	const randomElementFromArray = arr => arr[floorRandomNumberInARange(arr.length)];
 
-	function refreshQuote(e) {
+	function refreshQuote(quotes) {
 		const randomQuote = randomElementFromArray(quotes);
 		quoteBox.innerHTML = randomQuote.text;
 		authorBox.innerHTML = randomQuote.author;
@@ -149,8 +149,7 @@
 		fetch(endpoint)
 			.then(blob => blob.json())
 			.then(json => filterArray(json))
-			.then(data => quotes.push(...data))
-			.then(e => refreshQuote())
+			.then(quotes => refreshQuote(quotes))
 			.then(e => endAnimation())
 			.catch(e => console.log(e))
 	}
