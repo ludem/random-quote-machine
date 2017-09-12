@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -111,61 +112,61 @@
 		<i class="button change fa fa-refresh fa-fw fa-2x"></i>
 		<i class="quote-icon fa fa-quote-left fa-2x"></i>
 	</div>
+	<script>
+		const endpoint = 'https://jsonblob.com/api/jsonBlob/729a10dd-4837-11e7-ae4c-05b82d5e827c';
+		const quotes = [];
+	
+		const floorRandomNumberInARange = function (max, min = 0) {
+			return Math.floor(Math.random() * (max - min) + min);
+		}
+		const filterArray = array => array.filter(el => el['author'] && el['text']);
+		const randomElementFromArray = arr => arr[floorRandomNumberInARange(arr.length)];
+	
+		function refreshQuote(quotes) {
+			const randomQuote = randomElementFromArray(quotes);
+			quoteBox.innerHTML = randomQuote.text;
+			authorBox.innerHTML = randomQuote.author;
+			twitterLink.href = encodeURI(`https://twitter.com/intent/tweet?text="${randomQuote.text}" - ${randomQuote.author}&hashtags=quote`);
+		}
+	
+		function newQuoteTransition(e) {
+			container.classList.add('box-refresh');
+			quoteButton.classList.add('faster-spin');
+			quoteBox.classList.add('gold');
+			authorBox.classList.add('gold');
+		}
+	
+		function endAnimation(e) {
+			quoteButton.classList.remove('faster-spin');
+			container.classList.remove('box-refresh');
+			quoteBox.classList.remove('gold');
+			authorBox.classList.remove('gold');
+		}
+	
+		function fetchQuote() {
+			fetch(endpoint)
+				.then(blob => blob.json())
+				.then(json => filterArray(json))
+				.then(quotes => refreshQuote(quotes))
+				.then(e => endAnimation())
+				.catch(e => console.log(e))
+		}
+	
+		const quoteBox = document.querySelector('.quote');
+		const authorBox = document.querySelector('.author');
+		const quoteButton = document.querySelector('.change');
+		const container = document.querySelector('.container');
+		const twitterLink = document.querySelector('#twitter-link');
+	
+		fetchQuote();
+	
+		quoteButton.addEventListener('click', () => {
+			fetchQuote();
+			newQuoteTransition();
+		});
+	//container.addEventListener('transitionend', endAnimation);
+	
+	</script>
 </body>
 
 </html>
-<script>
-	const endpoint = 'https://jsonblob.com/api/jsonBlob/729a10dd-4837-11e7-ae4c-05b82d5e827c';
-	const quotes = [];
-
-	const floorRandomNumberInARange = function (max, min = 0) {
-		return Math.floor(Math.random() * (max - min) + min);
-	}
-	const filterArray = array => array.filter(el => el['author'] && el['text']);
-	const randomElementFromArray = arr => arr[floorRandomNumberInARange(arr.length)];
-
-	function refreshQuote(quotes) {
-		const randomQuote = randomElementFromArray(quotes);
-		quoteBox.innerHTML = randomQuote.text;
-		authorBox.innerHTML = randomQuote.author;
-		twitterLink.href = encodeURI(`https://twitter.com/intent/tweet?text="${randomQuote.text}" - ${randomQuote.author}&hashtags=quote`);
-	}
-
-	function newQuoteTransition(e) {
-		container.classList.add('box-refresh');
-		quoteButton.classList.add('faster-spin');
-		quoteBox.classList.add('gold');
-		authorBox.classList.add('gold');
-	}
-
-	function endAnimation(e) {
-		quoteButton.classList.remove('faster-spin');
-		container.classList.remove('box-refresh');
-		quoteBox.classList.remove('gold');
-		authorBox.classList.remove('gold');
-	}
-
-	function fetchQuote() {
-		fetch(endpoint)
-			.then(blob => blob.json())
-			.then(json => filterArray(json))
-			.then(quotes => refreshQuote(quotes))
-			.then(e => endAnimation())
-			.catch(e => console.log(e))
-	}
-
-	const quoteBox = document.querySelector('.quote');
-	const authorBox = document.querySelector('.author');
-	const quoteButton = document.querySelector('.change');
-	const container = document.querySelector('.container');
-	const twitterLink = document.querySelector('#twitter-link');
-
-	fetchQuote();
-
-	quoteButton.addEventListener('click', () => {
-		fetchQuote();
-		newQuoteTransition();
-	});
-//container.addEventListener('transitionend', endAnimation);
-
-</script>
